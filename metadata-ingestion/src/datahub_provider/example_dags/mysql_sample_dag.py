@@ -54,7 +54,7 @@ with DAG(
     ingest_task = PythonVirtualenvOperator(
         task_id="ingest_from_mysql",
         requirements=[
-            "acryl-datahub[mysql]",
+            "acryl-datahub[mysql]", "shutil==1.0.0","git==0.9.0"
         ],
         system_site_packages=False,
         python_callable=ingest_from_mysql,
