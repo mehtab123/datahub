@@ -51,11 +51,11 @@ with DAG(
     # While it is also possible to use the PythonOperator, we recommend using
     # the PythonVirtualenvOperator to ensure that there are no dependency
     # conflicts between DataHub and the rest of your Airflow environment.
-    ingest_task = PythonVirtualenvOperator(
+    ingest_task = PythonOperator(
         task_id="ingest_from_mysql",
-        requirements=[
-            "acryl-datahub[mysql]",
-        ],
-        system_site_packages=False,
+#         requirements=[
+#             "acryl-datahub[mysql]",
+#         ],
+#         system_site_packages=False,
         python_callable=ingest_from_mysql,
     )
