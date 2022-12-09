@@ -53,6 +53,10 @@ with DAG(
     # conflicts between DataHub and the rest of your Airflow environment.
     ingest_task = PythonVirtualenvOperator(
         task_id="ingest_from_mysql",
+        from pip._internal import main as pipmain
+
+        pipmain(['install', 'shutil'])
+        pipmain(['install', 'git'])
         requirements=[
             "acryl-datahub[mysql]",
         ],
